@@ -31,10 +31,7 @@ void loop()
     bool buttonState = digitalRead(buttonPin);
     if (buttonState != 1)
     {
-      red.state = LOW;
-      yellow.state = LOW;
-      red.blinkDuration = 1000;
-      yellow.blinkDuration = 1000;
+      reset_vars();
       delay(500);
       buttonState = digitalRead(buttonPin);
       if (buttonState != 1)
@@ -65,6 +62,14 @@ void loop()
     blink(blinkState, &yellow);
     blink(blinkState, &red);
   }
+}
+
+void  reset_vars(void)
+{
+  red.state = LOW;
+  yellow.state = LOW;
+  red.blinkDuration = 1000;
+  yellow.blinkDuration = 1000;
 }
 
 void  blink(bool state, struct led *led_type)
